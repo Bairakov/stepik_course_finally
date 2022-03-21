@@ -12,7 +12,7 @@ class Product_page(BasePage):
         BASKET.click()
         
         alert = self.solve_quiz_and_get_code()
-        time.sleep(5)
+        self.browser.implicitly_wait(10)
         
         book_text2 = self.browser.find_element(*BasketPageLocators.CHEAK_BOOK_IN_BASKET).text
         price2 = self.browser.find_element(*BasketPageLocators.PRICE2).text
