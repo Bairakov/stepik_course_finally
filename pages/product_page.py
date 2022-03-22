@@ -5,7 +5,7 @@ from .locators import BasketPageLocators
 from selenium.webdriver.common.by import By
 
 class Product_page(BasePage):
-    def add_to_basket(self):
+    def add_to_basket_and_assert(self):
         book_text = self.browser.find_element(*BasketPageLocators.HANDBOOK).text
         price1 = self.browser.find_element(*BasketPageLocators.PRICE1).text
         BASKET = self.browser.find_element(*BasketPageLocators.BASKET_BUTTON)
@@ -23,3 +23,14 @@ class Product_page(BasePage):
         
 
 
+    def add_to_basket(self):
+        BASKET = self.browser.find_element(*BasketPageLocators.BASKET_BUTTON)
+        BASKET.click()
+
+    def should_not_be_success_message(self):
+        assert self.is_not_element_present(*BasketPageLocators.SUCCESS_MESSAGE), \
+            "Success message is presented, but should not be" 
+                
+    def wait_until_the_element_disappears(self):
+        assert self.is_disappeared(*BasketPageLocators.SUCCESS_MESSAGE), \
+            "Success message is presented, but should not be"

@@ -15,3 +15,9 @@ class BasketPageLocators():
     CHEAK_BOOK_IN_BASKET = (By.XPATH, '//*[@id="messages"]/div[1]/div/strong')
     PRICE2 = (By.XPATH, '//*[@id="messages"]/div[3]/div/p[1]/strong')
     PRICE1 = (By.XPATH, "//p[@class='price_color']")
+    SUCCESS_MESSAGE = (By.XPATH, '//*[@id="messages"]/div[1]/div/strong')
+
+    
+
+class BasePageLocators():
+    LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
