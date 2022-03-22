@@ -4,6 +4,7 @@ from .pages.product_page import Product_page
 from .pages.base_page import BasePage
 import time
 import pytest
+from .pages.basket_page import Basket_page
 
 
 @pytest.mark.parametrize('link', ["promo=offer0",
@@ -17,7 +18,7 @@ import pytest
                                   "promo=offer8",
                                   "promo=offer9"])
 
-def test_guest_can_add_product_to_basket(browser):
+def test_guest_can_add_product_to_basket(browser, link):
     link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=newYear2019"
     page = Product_page(browser, link)
     page.open()
@@ -59,3 +60,20 @@ def test_guest_can_go_to_login_page_from_product_page(browser):
     page.open()
     page.go_to_login_page()
 
+
+def test_guest_cant_see_product_in_basket_opened_from_main_page(browser):
+    link = "http://selenium1py.pythonanywhere.com/en-gb/"
+    page = Basket_page(browser, link)
+    page.open()
+    page.go_to_basket()
+    page.should_not_be_products_in_basket()
+    page.should_be_text_basket_is_empty()
+
+
+def test_guest_cant_see_product_in_basket_opened_from_product_page(browser):
+    link = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/hacking-exposed-wireless_208/"
+    page = Basket_page(browser, link)
+    page.open()
+    page.go_to_basket()
+    page.should_not_be_products_in_basket()
+    page.should_be_text_basket_is_empty()

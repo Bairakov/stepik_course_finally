@@ -16,8 +16,10 @@ class BasketPageLocators():
     PRICE2 = (By.XPATH, '//*[@id="messages"]/div[3]/div/p[1]/strong')
     PRICE1 = (By.XPATH, "//p[@class='price_color']")
     SUCCESS_MESSAGE = (By.XPATH, '//*[@id="messages"]/div[1]/div/strong')
-
-    
+    BASKET_ITEMS = (By.XPATH, '//*[@id="basket_formset"]/div')
+    BASKET_EMPTY = (By.XPATH, "//p[contains(text(), 'empty')]")
 
 class BasePageLocators():
     LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
+    BASKET_LINK = (By.XPATH, "//a[@class='btn btn-default']")
+    

@@ -4,6 +4,7 @@ from selenium import webdriver
 from .locators import BasketPageLocators
 from selenium.webdriver.common.by import By
 
+
 class Product_page(BasePage):
     def add_to_basket_and_assert(self):
         book_text = self.browser.find_element(*BasketPageLocators.HANDBOOK).text
